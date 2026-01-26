@@ -1,0 +1,22 @@
+name: PvpMinigame
+version: '0.0.1'
+main: me.dawn.id.pvpMinigame.PvpMinigame
+api-version: '1.21'
+prefix: PvpPlugin
+authors: [ dawnbuild ]
+description: PvpMinecraft Plugin
+commands:
+  kit:
+    permission: pvpminigame.user
+  duel:
+    permission: pvpminigame.user
+  duelaccept:
+    permission: pvpminigame.user
+  editkit:
+    permission: pvpminigame.admin
+  setkit:
+    permission: pvpminigame.admin
+  setduelspawn:
+    permission: pvpminigame.admin
+  setarea:
+    permission: pvpminigame.admin
