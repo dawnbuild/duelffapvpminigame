@@ -38,7 +38,7 @@ public class KitCommand implements CommandExecutor, TabCompleter {
         ConfigurationSection section;
         if (args.length==1){
             tabComplete.clear();
-            section = DuelAreaFile.get().getConfigurationSection("Area");
+            section = KitFile.get().getConfigurationSection("PlayerKit.FFA");
             if (section.getKeys(false).isEmpty()) return;
             tabComplete.addAll(section.getKeys(false));
         }

@@ -17,9 +17,11 @@ public class DuelAcceptCommand implements CommandExecutor {
         if (args.length !=1) return MsgUtil.noArgs("%prefix% &eUsage: &f/duelaccept <&aPlayer_Name&f>",player,false);
         String invite = args[0];
         if (Bukkit.getPlayer(invite) == null || !Bukkit.getPlayer(invite).isOnline()) return MsgUtil.noArgs("%prefix% &cTidak ada pemain dengan nama &a" + invite,player,false);
-        Duel duel = Duel.getInvitation(invite,player);
-        if (duel == null) return MsgUtil.noArgs("%prefix% &cThere's somthing wrong in the plugin code!! report this to the developer ASAP",player,false);
+        Duel duel = Duel.getInvitation(Bukkit.getPlayer(invite),player);
+        if (duel == null) return MsgUtil.noArgs("%prefix% &cTidak ada undangan duel dari &a" + invite,player,false);
+
         Duel.accept(duel,player);
+
         return true;
     }
 }

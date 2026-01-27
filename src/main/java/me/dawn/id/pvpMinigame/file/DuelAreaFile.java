@@ -1,6 +1,7 @@
 package me.dawn.id.pvpMinigame.file;
 
 import me.dawn.id.pvpMinigame.PvpMinigame;
+import me.dawn.id.pvpMinigame.PvpMode;
 import me.dawn.id.pvpMinigame.area.Area;
 import me.dawn.id.pvpMinigame.area.DuelArena;
 import org.bukkit.Location;
@@ -39,7 +40,12 @@ public class DuelAreaFile {
     }
 
     public static Area getAreaByName(String areaName){
+        if (!isAreaExist(areaName)) return null;
         return new Area(areaName,get().getLocation(AREA + areaName+".pos1"),get().getLocation(AREA + areaName+".pos1"));
+    }
+
+    public static boolean isAreaExist(String areaname){
+        return get().contains(AREA+'.'+areaname);
     }
 
     public static DuelArena getDuelAreaSpawnByName(String areaName){

@@ -21,4 +21,8 @@ public class MsgUtil {
         sendMessage(player,str);
         return b;
     }
+    public static void noArgs(String str,Player player){
+        sendMessage(player,str);
+        return;
+    }
 }

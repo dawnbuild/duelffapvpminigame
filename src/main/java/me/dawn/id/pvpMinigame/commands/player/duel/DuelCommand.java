@@ -36,12 +36,18 @@ public class DuelCommand implements CommandExecutor, TabCompleter {
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
         List<String> tabComplete = new ArrayList<>();
         doMyTabComplete(args,tabComplete);
-        return List.of();
+        return tabComplete;
     }
 
     public void doMyTabComplete(String[] args, List<String> tabComplete){
         ConfigurationSection section;
         switch (args.length){
+            case 1:
+                tabComplete.clear();
+                for(Player player : Bukkit.getOnlinePlayers()){
+                    tabComplete.add(player.getName());
+                }
+                break;
             case 2:
                 tabComplete.clear();
                 section = KitFile.get().getConfigurationSection("PlayerKit.DUEL");

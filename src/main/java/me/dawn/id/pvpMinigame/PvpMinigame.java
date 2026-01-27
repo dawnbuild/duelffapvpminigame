@@ -2,6 +2,7 @@ package me.dawn.id.pvpMinigame;
 
 import me.dawn.id.pvpMinigame.admin.SelectionModeFunc;
 import me.dawn.id.pvpMinigame.commands.admin.*;
+import me.dawn.id.pvpMinigame.commands.cmdDebug;
 import me.dawn.id.pvpMinigame.commands.player.KitCommand;
 import me.dawn.id.pvpMinigame.commands.player.duel.DuelAcceptCommand;
 import me.dawn.id.pvpMinigame.commands.player.duel.DuelCommand;
@@ -26,6 +27,7 @@ public final class PvpMinigame extends JavaPlugin {
         KitFile.reload();
 
         this.getCommand("setarea").setExecutor(new CommandSetArea());
+        getCommand("debugtest").setExecutor(new cmdDebug());
         getCommand("setduelspawn").setExecutor(new CommandSetSpawn());
         getCommand("setkit").setExecutor(new CommandSetKit());
         getCommand("editkit").setExecutor(new CommandEditKit());

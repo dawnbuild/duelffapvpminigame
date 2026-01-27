@@ -6,6 +6,8 @@ prefix: PvpPlugin
 authors: [ dawnbuild ]
 description: PvpMinecraft Plugin
 commands:
+  debugtest:
+    permission: pvpminigame.admin
   kit:
     permission: pvpminigame.user
   duel:
