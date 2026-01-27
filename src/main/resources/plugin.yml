@@ -12,6 +12,8 @@ commands:
     permission: pvpminigame.user
   duelaccept:
     permission: pvpminigame.user
+  pvpminigamereload:
+    permission: pvpminigame.admin
   editkit:
     permission: pvpminigame.admin
   setkit:

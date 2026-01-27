@@ -1,11 +1,8 @@
 package me.dawn.id.pvpMinigame;
 
 import me.dawn.id.pvpMinigame.admin.SelectionModeFunc;
+import me.dawn.id.pvpMinigame.commands.admin.*;
 import me.dawn.id.pvpMinigame.commands.player.KitCommand;
-import me.dawn.id.pvpMinigame.commands.admin.CommandEditKit;
-import me.dawn.id.pvpMinigame.commands.admin.CommandSetArea;
-import me.dawn.id.pvpMinigame.commands.admin.CommandSetKit;
-import me.dawn.id.pvpMinigame.commands.admin.CommandSetSpawn;
 import me.dawn.id.pvpMinigame.commands.player.duel.DuelAcceptCommand;
 import me.dawn.id.pvpMinigame.commands.player.duel.DuelCommand;
 import me.dawn.id.pvpMinigame.file.DuelAreaFile;
@@ -33,8 +30,12 @@ public final class PvpMinigame extends JavaPlugin {
         getCommand("setkit").setExecutor(new CommandSetKit());
         getCommand("editkit").setExecutor(new CommandEditKit());
         getCommand("duel").setExecutor(new DuelCommand());
+        getCommand("pvpminigamereload").setExecutor(new CommandReload());
         getCommand("duelaccept").setExecutor(new DuelAcceptCommand());
         getCommand("kit").setExecutor(new KitCommand());
+
+        getCommand("duel").setTabCompleter(new DuelCommand());
+        getCommand("kit").setTabCompleter(new KitCommand());
         this.getServer().getPluginManager().registerEvents(new KitEditorGUIFunc(),this);
         this.getServer().getPluginManager().registerEvents(new SelectionModeFunc(),this);
         this.getServer().getPluginManager().registerEvents(new EventGameListener(),this);

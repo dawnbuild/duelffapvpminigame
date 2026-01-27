@@ -1,12 +1,15 @@
 package me.dawn.id.pvpMinigame.thegame;
 
 import me.dawn.id.pvpMinigame.MsgUtil;
+import me.dawn.id.pvpMinigame.PvpMinigame;
 import me.dawn.id.pvpMinigame.PvpMode;
 import me.dawn.id.pvpMinigame.area.Area;
 import me.dawn.id.pvpMinigame.file.DuelAreaFile;
 import me.dawn.id.pvpMinigame.kit.Kit;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -97,14 +100,14 @@ public class Duel {
             MsgUtil.noArgs("%prefix% &cApa maksudmu invite dirimu sendiri??", invitator.getPlayer1(), false);
             return;
         }
+
         if (!inviteMap.containsKey(invitator)) {
             inviteMap.put(invitator,new HashSet<>());
             inviteMap.get(invitator).add(target.getUniqueId());
-        }else inviteMap.get(invitator).add(target.getUniqueId());
-        if(inviteMap.get(invitator).contains(target.getUniqueId())){
+        }else if(inviteMap.get(invitator).contains(target.getUniqueId())){
             MsgUtil.noArgs("%prefix% &ePemain dengan nama &r"+ target.getName()+" &esudah kamu invite untuk melakukan duel!!", invitator.getPlayer1(), false);
             return;
-        }
+        } else inviteMap.get(invitator).add(target.getUniqueId());
         MsgUtil.sendMessage(target,"%prefix% &a" + invitator.getPlayer1().getName() + " &emengundang anda pada duel &c" + kit +" kit");
         MsgUtil.sendMessage(invitator.getPlayer1(),"%prefix% &a" + "&emengundang &a"+ target.getName() +" &epada duel &c" + kit +" kit");
     }

@@ -37,7 +37,7 @@ public class KitFile {
         customFile = YamlConfiguration.loadConfiguration(file);
     }
 
-    static FileConfiguration get(){
+    public static FileConfiguration get(){
         return customFile;
     }
 
