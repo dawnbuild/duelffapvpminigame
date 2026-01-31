@@ -1,4 +1,4 @@
-package me.dawn.id.pvpMinigame.kit.gui;
+package me.dawn.id.pvpMinigame.kit.gui.admin;
 
 import me.dawn.id.pvpMinigame.MsgUtil;
 import me.dawn.id.pvpMinigame.PvpMinigame;
@@ -16,8 +16,10 @@ import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import static me.dawn.id.pvpMinigame.kit.gui.GUIHelperClass.funcionalItem;
+import static me.dawn.id.pvpMinigame.kit.gui.GUIHelperClass.item;
 
 public class KitEditorGUI implements InventoryHolder {
     public static final int GUI_SIZE = 6;
@@ -49,62 +51,15 @@ public class KitEditorGUI implements InventoryHolder {
     }
 
     /*
-    * Just an ordinary Item Builder
-    * */
-    private ItemStack item(String name, Material material, List<String> lore,boolean glow){
-        ItemStack item = new ItemStack(material);
-        ItemMeta meta = item.getItemMeta();
-        meta.getPersistentDataContainer().set(namespaceKey, PersistentDataType.BOOLEAN,true);
-        if (glow){
-            item.addUnsafeEnchantment(Enchantment.AQUA_AFFINITY,1);
-            meta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
-        }
-        if (lore !=null) meta.setLore(lore);
-        meta.setItemName(MsgUtil.ChatColor(name));
-        item.setItemMeta(meta);
-        return item;
-    }
-
-    /*
-    * Give item a single function like delete or save or rename kit when clicked
-    * */
-    private static ItemStack funcionalItem(ItemStack item,String task){
-        ItemMeta meta = item.getItemMeta();
-        NamespacedKey nk = new NamespacedKey(PvpMinigame.getInstance(),NSKEY+"func");
-        meta.getPersistentDataContainer().set(nk,PersistentDataType.STRING,task);
-        item.setItemMeta(meta);
-        return item;
-    }
-
-    /*
-    * Getting item function like(Save Kit/Delete Kit) when item clicked from inventory
-    * */
-    public static boolean getItemFunc(ItemStack item,String func){
-        NamespacedKey nsk = NamespacedKey.fromString(NSKEY + "func",PvpMinigame.getInstance());
-        assert nsk != null;
-        return item.getItemMeta().getPersistentDataContainer().get(nsk,PersistentDataType.STRING) == func;
-    }
-
-    /*
-    * Checking if an item is an moveable item or not
-    * */
-    public static boolean isItemMoveable(ItemStack item){
-        NamespacedKey nsk = NamespacedKey.fromString(NSKEY,PvpMinigame.getInstance());
-        assert nsk != null;
-        ItemMeta meta = item.getItemMeta();
-        return (meta.getPersistentDataContainer().has(nsk) && meta.getPersistentDataContainer().getOrDefault(nsk,PersistentDataType.BOOLEAN,true));
-    }
-
-    /*
     * Build an inventory and store all of content into it
     * */
     public Inventory inv(){
         Inventory inv = Bukkit.createInventory(this,GUI_SIZE*9, ChatColor.translateAlternateColorCodes('&',kitName));
-        ItemStack armor = item("&aArmor Slot",Material.ORANGE_STAINED_GLASS_PANE,null,true);
-        ItemStack offhand = item("&bOffhand Slot",Material.LIGHT_BLUE_STAINED_GLASS_PANE,null,true);
-        ItemStack nothin = item("",Material.BLACK_STAINED_GLASS_PANE,null,false);
-        ItemStack delete = funcionalItem(item("&l&cDelete Kit",Material.REDSTONE,null,false),"deletekit");
-        ItemStack save = funcionalItem(item("&l&aSave Kit",Material.EMERALD,null,false),"savekit");
+        ItemStack armor = item("&aArmor Slot",namespaceKey,Material.ORANGE_STAINED_GLASS_PANE,null,true);
+        ItemStack offhand = item("&bOffhand Slot",namespaceKey,Material.LIGHT_BLUE_STAINED_GLASS_PANE,null,true);
+        ItemStack nothin = item("",namespaceKey,Material.BLACK_STAINED_GLASS_PANE,null,false);
+        ItemStack delete = funcionalItem(item("&l&cDelete Kit",namespaceKey,Material.REDSTONE,null,false),"deletekit",NSKEY);
+        ItemStack save = funcionalItem(item("&l&aSave Kit",namespaceKey,Material.EMERALD,null,false),"savekit",NSKEY);
         inv.setItem(4,nothin);
         inv.setItem(6,nothin);
         inv.setItem(7,delete);

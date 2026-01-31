@@ -57,6 +57,17 @@ public class KitFile {
         reload();
     }
 
+    public static int getFFAKillReq(String kitName){
+        if (!get().contains(KIT+PvpMode.FFA.toString()+'.'+kitName+".ffakillreq")) setFFAKillReq(kitName,0);
+        return get().getInt(KIT+PvpMode.FFA.toString()+'.'+kitName+".ffakillreq");
+    }
+
+    public static void setFFAKillReq(String kitName,int num){
+        get().set(KIT+PvpMode.FFA.toString()+'.'+kitName+".ffakillreq",num);
+        save();
+        reload();
+    }
+
     public static void setKits(String kitName, List<ItemStack> items, PvpMode mode){
         get().set(KIT+mode.toString()+'.'+kitName+".items",items);
         save();

@@ -1,4 +1,4 @@
-package me.dawn.id.pvpMinigame.kit.gui;
+package me.dawn.id.pvpMinigame.kit.gui.admin;
 
 import me.dawn.id.pvpMinigame.MsgUtil;
 import me.dawn.id.pvpMinigame.PvpMode;
@@ -14,7 +14,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class KitEditorGUIFunc implements Listener {
     @EventHandler

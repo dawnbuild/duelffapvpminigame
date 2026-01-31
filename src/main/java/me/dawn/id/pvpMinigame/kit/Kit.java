@@ -3,6 +3,7 @@ package me.dawn.id.pvpMinigame.kit;
 import me.dawn.id.pvpMinigame.MsgUtil;
 import me.dawn.id.pvpMinigame.PvpMode;
 import me.dawn.id.pvpMinigame.file.KitFile;
+import me.dawn.id.pvpMinigame.file.playerdata.FFAPlayerKitData;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
@@ -22,6 +23,11 @@ public class Kit {
     }
 
     public static void giveKit(Player player, String name,PvpMode mode){
+        if (mode == PvpMode.FFA && FFAPlayerKitData.getFFAKill(player) != KitFile.getFFAKillReq(name)){
+            MsgUtil.noArgs("%prefix% &cKamu belum membuka akses untuk kit ini",player,false);
+            MsgUtil.noArgs("%prefix% &cKamu memerlukan &a" + KitFile.getFFAKillReq(name) + " &cKill dari mode &aFFA",player,false);
+            return;
+        }
         if (!KitFile.isKitExist(name,mode)){
             MsgUtil.noArgs("%prefix% &cKit dengan nama &a" + name +" &tidak ditemukan!",player,false);
             return;

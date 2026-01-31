@@ -2,7 +2,7 @@ package me.dawn.id.pvpMinigame.commands.admin;
 
 import me.dawn.id.pvpMinigame.MsgUtil;
 import me.dawn.id.pvpMinigame.PvpMode;
-import me.dawn.id.pvpMinigame.kit.gui.KitEditorGUI;
+import me.dawn.id.pvpMinigame.kit.gui.admin.KitEditorGUI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

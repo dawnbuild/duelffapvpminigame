@@ -8,7 +8,7 @@ import me.dawn.id.pvpMinigame.commands.player.duel.DuelAcceptCommand;
 import me.dawn.id.pvpMinigame.commands.player.duel.DuelCommand;
 import me.dawn.id.pvpMinigame.file.DuelAreaFile;
 import me.dawn.id.pvpMinigame.file.KitFile;
-import me.dawn.id.pvpMinigame.kit.gui.KitEditorGUIFunc;
+import me.dawn.id.pvpMinigame.kit.gui.admin.KitEditorGUIFunc;
 import me.dawn.id.pvpMinigame.thegame.EventGameListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
